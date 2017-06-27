@@ -4,6 +4,34 @@
     <script src="node_modules/angular/angular.js"></script>
 
     <script src="./app/app.js"></script>
+    <script src="./app/Geolocator/geolocator-controller.js"></script>
+    <script src="./app/Geolocator/geolocator-service.js"></script>
+    <script src="./app/CoordsOpposite/coordsopposite-service.js"></script>
+
   </head>
-  <body ng-app="atraves"></body>
+  <body ng-app="atraves">
+    <header>
+      <h1>Atrav&eacute;s</h1>
+      <h3>The other side of the world. Here.</h3>
+    </header>
+
+    <section id="coordinate-entry" ng-controller="geolocator-controller">
+
+      <label>Latitude:</label>
+      <input type="text" placeholder="Enter latitude coordinates" ng-model="latitude" value="latitude"/>
+      <label>Longitude:</label>
+      <input type="text" placeholder="Enter longitude coordinates" ng-model="longitude" value="longitude"/>
+      <button type="submit" ng-click="getCurrentPosition()" />Click me</button>
+      <button type="submit" ng-click="reset()" />Change it</button>
+
+    </section>
+
+    <section id="maps">
+
+    </section>
+
+    <section id="Chatbox">
+    </section>
+
+  </body>
 </html>
