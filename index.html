@@ -21,8 +21,12 @@
       <input type="text" placeholder="Enter latitude coordinates" ng-model="latitude" value="latitude"/>
       <label>Longitude:</label>
       <input type="text" placeholder="Enter longitude coordinates" ng-model="longitude" value="longitude"/>
-      <button type="submit" ng-click="getCurrentPosition()" />Click me</button>
-      <button type="submit" ng-click="reset()" />Change it</button>
+      <label>Use browser geolocation for coordinates:</label>
+      <input type="checkbox" />
+      <!--Placeholder button to test functionality. Remove-->
+      <button type="submit" ng-click="getCurrentPosition()" />Geolocate Me</button>
+      <!--Placeholder button to test functionality. Remove-->
+      <button type="submit" ng-click="coordsOpposite()" />Reverse coords</button>
 
     </section>
 

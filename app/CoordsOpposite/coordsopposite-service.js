@@ -4,15 +4,11 @@ angular.module('CoordsOpposite', [])
 
   var coordsOpposite = function(lon){
     var revLon;
-    //if longitude is positive subtract 180
-    if(lon > 0){
-      revLon = lon - 180;
-    }
-    //else (if longitude is 0 or negative) add 180
-    else {
-      revLon = lon + 180;
-    }
+    lon = parseInt(lon);
+    //if longitude is positive subtract 180 (if longitude is 0 or negative add 180)
+    lon > 0 ? revLon = lon - 180 : revLon = lon + 180
     //latitude remains the same
+    console.log(revLon)
     return revLon;
   }
 
