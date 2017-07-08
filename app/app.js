@@ -1,1 +1,1 @@
-var atraves = angular.module('atraves', ['geolocator-controller', 'Geolocator', 'CoordsOpposite']);
+var atraves = angular.module('atraves', ['uiGmapgoogle-maps','geolocator-controller','maps-controller', 'Geolocator']);

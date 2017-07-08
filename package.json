@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jb714/atraves#readme",
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-google-maps": "^2.4.1",
     "express": "^4.15.3"
   }
 }

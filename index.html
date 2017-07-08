@@ -1,21 +1,28 @@
 <html>
   <head>
     <title>Atrav&eacute;s</title>
+
     <script src="node_modules/angular/angular.js"></script>
+    <script src='http://maps.google.cn/maps/api/js'></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <script src="http://rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.js"></script>
+    <script src="http://rawgit.com/nmccready/angular-simple-logger/master/dist/angular-simple-logger.js"></script>
 
     <script src="./app/app.js"></script>
     <script src="./app/Geolocator/geolocator-controller.js"></script>
     <script src="./app/Geolocator/geolocator-service.js"></script>
-    <script src="./app/CoordsOpposite/coordsopposite-service.js"></script>
+    <script src="./app/GoogleMaps/maps-controller.js"></script>
+
+    <link rel="stylesheet" href="styles.css"/>
 
   </head>
-  <body ng-app="atraves">
+  <body ng-app="atraves" ng-controller="geolocator-controller">
     <header>
-      <h1>Atrav&eacute;s</h1>
+      <h1 id="firstPart">botell<span id="secondPart">A</span>trav&eacute;s</h1>
       <h3>The other side of the world. Here.</h3>
     </header>
 
-    <section id="coordinate-entry" ng-controller="geolocator-controller">
+    <section id="coordinate-entry">
 
       <label>Latitude:</label>
       <input type="text" placeholder="Enter latitude coordinates" ng-model="latitude" value="latitude"/>
@@ -24,15 +31,22 @@
       <label>Use browser geolocation for coordinates:</label>
       <input type="checkbox" />
       <!--Placeholder button to test functionality. Remove-->
-      <button type="submit" ng-click="getCurrentPosition()" />Geolocate Me</button>
-      <!--Placeholder button to test functionality. Remove-->
       <button type="submit" ng-click="coordsOpposite()" />Reverse coords</button>
 
-    </section>
-
-    <section id="maps">
 
     </section>
+
+    <section id="maps" ng-controller="maps-controller">
+      <div class="map" >
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+      </div>
+
+      <div class="map">
+        <ui-gmap-google-map center='map2.center' zoom='map2.zoom'></ui-gmap-google-map>
+      </div>
+
+    </section>
+
 
     <section id="Chatbox">
     </section>

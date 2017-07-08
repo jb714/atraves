@@ -1,0 +1,19 @@
+.angular-google-map-container{
+  height: 400px;
+  width: 400px;
+
+
+}
+
+.map{
+  border: solid 4px black;
+  display: inline-block;
+}
+
+/*#firstPart{
+  color: purple;
+}
+
+#secondPart{
+  color: blue;
+}*/
