@@ -10,6 +10,12 @@
   display: inline-block;
 }
 
+#receivedMsgs{
+  border: solid 1px black;
+  width: 400px;
+  height: 200px;
+}
+
 /*#firstPart{
   color: purple;
 }

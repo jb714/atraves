@@ -58,9 +58,14 @@
   <section id="Chatbox" ng-controller="messages-controller">
     <h3>Maybe someone is directly across the world from you.</h3>
     <h3> Put a message in a bottle for them:</h3>
-    <input type="text" placeholder="Name" ng-model="userName">
-    <textarea ng-model="message"></textarea>
-    <button type="submit" ng-click="postMessage()">Send Message</button>
+    <div id="receivedMsgs"></div>
+    <hr/>
+    <div id="msgForm">
+      <input type="text" placeholder="Name" ng-model="userName">
+      <br />
+      <textarea ng-model="message"></textarea>
+      <button type="submit" ng-click="postMessage()">Send Message</button>
+    </div>
   </section>
 
 </body>

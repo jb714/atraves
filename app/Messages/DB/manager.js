@@ -3,14 +3,11 @@ var Messages = require('./messages.js');
 exports.postMessage = function(req, res, next) {
 
   //uses body parser middleware to get the request.body
-  var text = {
+  var messages = new Messages({
+    id: req.body.id,
+    subId: req.body.subId,
     message: req.body.message,
     userName: req.body.userName
-  }
-
-  var messages = new Messages({
-    message: text.message,
-    userName: text.userName
   })
 
   messages.save(function(err) {
@@ -19,8 +16,6 @@ exports.postMessage = function(req, res, next) {
     }
     res.send(200, req.body);
   })
-    console.log("Message:", messages.message);
-    console.log("Message:", messages.userName);
 
   //If the coords-id or the coords-subid of the message already exists, then save to that collection of messages
 

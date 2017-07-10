@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var messageSchema = new Schema({
-  // id: String,
-  // subId: String,
+  id: String,
+  subId: String,
   message: String,
   userName: String
 })
