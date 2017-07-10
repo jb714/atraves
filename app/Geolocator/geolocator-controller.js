@@ -3,41 +3,37 @@ angular.module("geolocator-controller", [])
 
 .controller("geolocator-controller", function($scope, Geolocator){
 
-//Need all factories to pass their coordinate data here, as we need coordinates to initialize the rest of application
-$scope.latitude = "";
-$scope.longitude = "";
-$scope.oppLat = "";
-$scope.oppLon = "";
+  //Need all factories to pass their coordinate data here, as we need coordinates to initialize the rest of application
+  $scope.latitude = "";
+  $scope.longitude = "";
+  $scope.oppLat = "";
+  $scope.oppLon = "";
 
-  //Workhorse function which will trigger API call
+  //Function that calculates opposite coordinates
   $scope.coordsOpposite = function() {
     var obj  = Geolocator.coordsOpposite($scope.latitude,$scope.longitude);
     $scope.oppLat = obj.oppLat;
     $scope.oppLon = obj.oppLon;
   }
 
-  //If checkbox is false, then latitude/longitude are empty inputs. If it's true, then invoke getCurrentPosition
+  //Geolocation function. Runs if button on view is clicked.
+  $scope.getCurrentPosition = function() {
 
-    $scope.getCurrentPosition = function() {
+    Geolocator.getCurrentPosition().then(
 
-      Geolocator.getCurrentPosition().then(
+      function(promise){
 
-        function(promise){
+        $scope.latitude = parseInt(promise.coords.latitude);
+        $scope.longitude = parseInt(promise.coords.longitude);
 
-          $scope.latitude = parseInt(promise.coords.latitude);
-          $scope.longitude = parseInt(promise.coords.longitude);
-
-          $scope.coordsOpposite();
+        $scope.coordsOpposite();
 
 
-        },
-        function(err){
-          return err;
-        }
-      );
-    }
-
-  //Function that, when a button is clicked, sends whatever coordinates
-  //are in the ng-model along to the API, as well as the opposite coordinates.
+      },
+      function(err){
+        return err;
+      }
+    );
+  }
 
 })

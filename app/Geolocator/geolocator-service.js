@@ -4,11 +4,15 @@ angular.module('Geolocator', [])
 .factory('Geolocator', ['$http', '$window', '$q', function($http, $window, $q) {
 
   var getCurrentPosition = function() {
+
     var deferred = $q.defer();
 
     if(!$window.navigator.geolocation){
+
       deferred.reject('Looks like Geolocation isn\'t supported by your browser')
-    } else {
+    }
+
+    else {
       $window.navigator.geolocation.getCurrentPosition(
         function(position){
           deferred.resolve(position);
@@ -16,36 +20,38 @@ angular.module('Geolocator', [])
         function(err) {
           deferred.reject(err);
         });
+      }
+
+      return deferred.promise;
     }
 
-    return deferred.promise;
 
-  }
+    var coordsOpposite = function(lat, lon){
 
 
-  var coordsOpposite = function(lat, lon){
+      var oppLon = 0, oppLat = 0;
 
-    var oppLon = 0, oppLat = 0;
+      //If lat/lon are falsy, oppLon/oppLat default to zero and are returned
+      if(lat && lon){
+        lat = parseInt(lat);
+        lon = parseInt(lon);
 
-    if(lat && lon){
-      lat = parseInt(lat);
-      lon = parseInt(lon);
-    lat > 0 ? oppLat = parseInt("-" + lat) : oppLat = lat / -1;
+        lat > 0 ? oppLat = parseInt("-" + lat) : oppLat = lat / -1;
 
-    //if longitude is positive subtract 180 (if longitude is 0 or negative add 180)
-    lon > 0 ? oppLon = lon - 180 : oppLon = lon + 180
-  }
+        //if longitude is positive subtract 180 (if longitude is 0 or negative add 180)
+        lon > 0 ? oppLon = lon - 180 : oppLon = lon + 180;
+      }
+
+      return {
+        oppLat: oppLat,
+        oppLon: oppLon
+      }
+
+    }
 
     return {
-      oppLat: oppLat,
-      oppLon: oppLon
+      getCurrentPosition: getCurrentPosition,
+      coordsOpposite: coordsOpposite
     }
 
-  }
-
-  return {
-    getCurrentPosition: getCurrentPosition,
-    coordsOpposite: coordsOpposite
-    }
-
-}])
+  }])

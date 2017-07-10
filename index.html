@@ -1,60 +1,60 @@
 <html>
-  <head>
-    <title>Atrav&eacute;s</title>
+<head>
+  <title>Atrav&eacute;s</title>
 
-    <script src="node_modules/angular/angular.js"></script>
-    <script src='http://maps.google.cn/maps/api/js'></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
-    <script src="http://rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.js"></script>
-    <script src="http://rawgit.com/nmccready/angular-simple-logger/master/dist/angular-simple-logger.js"></script>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src='http://maps.google.cn/maps/api/js'></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+  <script src="http://rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.js"></script>
+  <script src="http://rawgit.com/nmccready/angular-simple-logger/master/dist/angular-simple-logger.js"></script>
 
-    <script src="./app/app.js"></script>
-    <script src="./app/Geolocator/geolocator-controller.js"></script>
-    <script src="./app/Geolocator/geolocator-service.js"></script>
-    <script src="./app/GoogleMaps/maps-controller.js"></script>
+  <script src="./app/app.js"></script>
+  <script src="./app/Geolocator/geolocator-controller.js"></script>
+  <script src="./app/Geolocator/geolocator-service.js"></script>
+  <script src="./app/GoogleMaps/maps-controller.js"></script>
 
-    <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css"/>
 
-  </head>
-  <body ng-app="atraves" ng-controller="geolocator-controller">
-    <header>
-      <h1 id="firstPart">botell<span id="secondPart">A</span>trav&eacute;s</h1>
-      <h3>The other side of the world. Here.</h3>
-    </header>
+</head>
+<body ng-app="atraves" ng-controller="geolocator-controller">
+  <header>
+    <h1 id="firstPart">botell<span id="secondPart">A</span>trav&eacute;s</h1>
+    <h3>The other side of the world. Here.</h3>
+  </header>
 
-    <section id="coordinate-entry">
+  <section id="coordinate-entry">
 
-      <label>Latitude:</label>
-      <input type="text" placeholder="Enter latitude coordinates" ng-model="latitude" value="latitude"/>
-      <label>Longitude:</label>
-      <input type="text" placeholder="Enter longitude coordinates" ng-model="longitude" value="longitude"/>
-      <button type="submit" ng-click="getCurrentPosition()" />GeoLocate Me</button>
-
-
-
-    </section>
-
-    <section id="maps" ng-controller="maps-controller">
-      <div class="map" >
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-          <!--Markers may not be needed
-          <ui-gmap-marker idKey="marker.id" coords="marker.coords"></ui-gmap-marker> -->
-        </ui-gmap-google-map>
-      </div>
-
-      <div class="map">
-        <ui-gmap-google-map center='map2.center' zoom='map2.zoom'>
-          <!--Markers may not be needed
-          <ui-gmap-marker idKey="marker2.id" coords="marker2.coords"></ui-gmap-marker> -->
-        </ui-gmap-google-map>
-
-      </div>
-
-    </section>
+    <label>Latitude:</label>
+    <input type="text" placeholder="Enter latitude coordinates" ng-model="latitude" value="latitude"/>
+    <label>Longitude:</label>
+    <input type="text" placeholder="Enter longitude coordinates" ng-model="longitude" value="longitude"/>
+    <button type="submit" ng-click="getCurrentPosition()" />GeoLocate Me</button>
 
 
-    <section id="Chatbox">
-    </section>
 
-  </body>
+  </section>
+
+  <section id="maps" ng-controller="maps-controller">
+    <div class="map" >
+      <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <!--Markers may not be needed
+        <ui-gmap-marker idKey="marker.id" coords="marker.coords"></ui-gmap-marker> -->
+      </ui-gmap-google-map>
+    </div>
+
+    <div class="map">
+      <ui-gmap-google-map center='map2.center' zoom='map2.zoom'>
+        <!--Markers may not be needed
+        <ui-gmap-marker idKey="marker2.id" coords="marker2.coords"></ui-gmap-marker> -->
+      </ui-gmap-google-map>
+
+    </div>
+
+  </section>
+
+
+  <section id="Chatbox">
+  </section>
+
+</body>
 </html>
