@@ -28,21 +28,26 @@
       <input type="text" placeholder="Enter latitude coordinates" ng-model="latitude" value="latitude"/>
       <label>Longitude:</label>
       <input type="text" placeholder="Enter longitude coordinates" ng-model="longitude" value="longitude"/>
-      <label>Use browser geolocation for coordinates:</label>
-      <input type="checkbox" />
-      <!--Placeholder button to test functionality. Remove-->
-      <button type="submit" ng-click="coordsOpposite()" />Reverse coords</button>
+      <button type="submit" ng-click="getCurrentPosition()" />GeoLocate Me</button>
+
 
 
     </section>
 
     <section id="maps" ng-controller="maps-controller">
       <div class="map" >
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+          <!--Markers may not be needed
+          <ui-gmap-marker idKey="marker.id" coords="marker.coords"></ui-gmap-marker> -->
+        </ui-gmap-google-map>
       </div>
 
       <div class="map">
-        <ui-gmap-google-map center='map2.center' zoom='map2.zoom'></ui-gmap-google-map>
+        <ui-gmap-google-map center='map2.center' zoom='map2.zoom'>
+          <!--Markers may not be needed
+          <ui-gmap-marker idKey="marker2.id" coords="marker2.coords"></ui-gmap-marker> -->
+        </ui-gmap-google-map>
+
       </div>
 
     </section>

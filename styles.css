@@ -1,12 +1,12 @@
 .angular-google-map-container{
   height: 400px;
   width: 400px;
+  border: solid 4px black;
 
 
 }
 
 .map{
-  border: solid 4px black;
   display: inline-block;
 }
 

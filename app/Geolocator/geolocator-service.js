@@ -17,21 +17,24 @@ angular.module('Geolocator', [])
           deferred.reject(err);
         });
     }
-    console.log(deferred.promise);
+
     return deferred.promise;
 
   }
 
 
   var coordsOpposite = function(lat, lon){
-    var oppLon, oppLat;
-    lat = parseInt(lat);
-    lon = parseInt(lon);
 
+    var oppLon = 0, oppLat = 0;
+
+    if(lat && lon){
+      lat = parseInt(lat);
+      lon = parseInt(lon);
     lat > 0 ? oppLat = parseInt("-" + lat) : oppLat = lat / -1;
 
     //if longitude is positive subtract 180 (if longitude is 0 or negative add 180)
     lon > 0 ? oppLon = lon - 180 : oppLon = lon + 180
+  }
 
     return {
       oppLat: oppLat,

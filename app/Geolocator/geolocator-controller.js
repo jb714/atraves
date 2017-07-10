@@ -27,6 +27,8 @@ $scope.oppLon = "";
           $scope.latitude = parseInt(promise.coords.latitude);
           $scope.longitude = parseInt(promise.coords.longitude);
 
+          $scope.coordsOpposite();
+
 
         },
         function(err){
