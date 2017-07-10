@@ -19,7 +19,7 @@ console.log("The music is playing on port " + port);
 
 
 //Mongoose Logic
-var dbURI='mongodb://heroku_rn1wr8vj:10j9tpo3gqon6p7385mv4trlg1@ds153412.mlab.com:53412/heroku_rn1wr8vj'
+var dbURI='mongodb://heroku_llgq3k60:cq0usn208jvs34tvvfdl0jnfmn@ds151702.mlab.com:51702/heroku_llgq3k60'
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function(){console.log("Mongoose. We're up")})
