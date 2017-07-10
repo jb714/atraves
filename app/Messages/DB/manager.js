@@ -17,7 +17,7 @@ exports.postMessage = function(req, res, next) {
     if(err){
       return err;
     }
-    res.status(status).send(body);
+    res.send(200, req.body);
   })
     console.log("Message:", messages.message);
     console.log("Message:", messages.userName);
