@@ -8,9 +8,9 @@ angular.module('messages-controller', [])
       var messageBody = {
         id: $scope.latitude.toString() + $scope.longitude.toString(),
         subId: $scope.oppLat.toString() + $scope.oppLon.toString(),
-        messages: [{
+        messageArray: [{
           userName: $scope.userName,
-          text: $scope.message,
+          message: $scope.message,
           time: moment().format('MMMM Do YYYY, h:mm a')
         }]
       }
@@ -19,7 +19,6 @@ angular.module('messages-controller', [])
       $http.post('/messages', messageBody).then(function(input){
         $scope.userName ="";
         $scope.message = "";
-        console.log(input);
       })
 
       .catch(function(error){

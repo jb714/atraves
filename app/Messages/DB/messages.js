@@ -4,12 +4,13 @@ var Schema = mongoose.Schema;
 var messageSchema = new Schema({
   id: String,
   subId: String,
-  messages: [{
+  messageArray: [{
     userName: String,
-    text: String,
+    message: String,
     time: String
   }]
 })
 
-var Messages = mongoose.model('Messages', messageSchema);
-module.exports = Messages;
+var Message = mongoose.model('Message', messageSchema);
+
+module.exports = Message;

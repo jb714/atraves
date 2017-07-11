@@ -4,8 +4,8 @@ angular.module("geolocator-controller", [])
 .controller("geolocator-controller", function($scope, Geolocator){
 
   //Need all factories to pass their coordinate data here, as we need coordinates to initialize the rest of application
-  $scope.latitude = "";
-  $scope.longitude = "";
+  $scope.latitude = "40";
+  $scope.longitude = "50";
   $scope.oppLat = "";
   $scope.oppLon = "";
 

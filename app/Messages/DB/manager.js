@@ -1,23 +1,39 @@
-var Messages = require('./messages.js');
+var Message = require('./messages.js');
 
 exports.postMessage = function(req, res, next) {
 
   //uses body parser middleware to get the request.body
   var input = req.body.messages;
 
-  var messages = new Messages({
+  var newMessage = new Message({
     id: req.body.id,
     subId: req.body.subId,
-    messages: req.body.messages
+    messageArray: req.body.messageArray
   })
 
-//If the coords-id or the coords-subid of the message does not already exist, create a new collection with the
-  messages.save(function(err) {
-    if(err){
-      return err;
+  Message.findOneAndUpdate(
+    {$or: [{id: newMessage.id, id: newMessage.subId}, {id: newMessage.subId, id: newMessage.id}]},
+    newMessage,
+    {upsert: true, new: true, runValidators: true},
+    function(err, doc) {
+      if(err){
+        console.log(err)
+      } else {
+        {$push: {messageArray: newMessage.messageArray[0]}}
+        console.log("All good :)")
+        res.send(200, req.body);
+      }
     }
-    res.send(200, req.body);
-  })
+  );
+
+//If the coords-id or the coords-subid of the message does not already exist, create a new collection with the
+  // newMessage.save(function(err) {
+  //   if(err){
+  //     return err;
+  //   }
+  //   console.log("from mongoose","All good.")
+  //   res.send(200, req.body);
+  // })
 
   //If the coords-id or the coords-subid of the message already exists, then update and push the first object in the messages array into the collection
 
