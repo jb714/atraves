@@ -4,8 +4,11 @@ var Schema = mongoose.Schema;
 var messageSchema = new Schema({
   id: String,
   subId: String,
-  message: String,
-  userName: String
+  messages: [{
+    userName: String,
+    text: String,
+    time: String
+  }]
 })
 
 var Messages = mongoose.model('Messages', messageSchema);

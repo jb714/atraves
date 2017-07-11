@@ -8,8 +8,11 @@ angular.module('messages-controller', [])
       var messageBody = {
         id: $scope.latitude.toString() + $scope.longitude.toString(),
         subId: $scope.oppLat.toString() + $scope.oppLon.toString(),
-        userName: $scope.userName,
-        message: $scope.message
+        messages: [{
+          userName: $scope.userName,
+          text: $scope.message,
+          time: moment().format('MMMM Do YYYY, h:mm a')
+        }]
       }
 
 
@@ -28,13 +31,6 @@ angular.module('messages-controller', [])
     }
 
 
-    // .success(function(data, status, headers, config){
-    //   console.log("Success!!")
-    // })
-    //
-    // .error(function(data,status){
-    //   console.log("Error");
-    // })
   }
-  //$http.post to mongo endpoint
+
 })

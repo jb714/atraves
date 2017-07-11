@@ -27,6 +27,8 @@ angular.module("maps-controller", [])
   //Watch for changes to latitude and longitude values on scope
   $scope.$watchGroup(['latitude', 'longitude'], function(){
     //the scope has changed, so we need to fire coordsOpposite again
+
+    console.log();
     $scope.coordsOpposite();
 
     $scope.map = {

@@ -3,13 +3,15 @@ var Messages = require('./messages.js');
 exports.postMessage = function(req, res, next) {
 
   //uses body parser middleware to get the request.body
+  var input = req.body.messages;
+
   var messages = new Messages({
     id: req.body.id,
     subId: req.body.subId,
-    message: req.body.message,
-    userName: req.body.userName
+    messages: req.body.messages
   })
 
+//If the coords-id or the coords-subid of the message does not already exist, create a new collection with the
   messages.save(function(err) {
     if(err){
       return err;
@@ -17,9 +19,9 @@ exports.postMessage = function(req, res, next) {
     res.send(200, req.body);
   })
 
-  //If the coords-id or the coords-subid of the message already exists, then save to that collection of messages
+  //If the coords-id or the coords-subid of the message already exists, then update and push the first object in the messages array into the collection
 
-  //If the coords-id or the coords-subid of the message does not already exist, creat a new collection with the
+
 }
 
 exports.getMessages = function(req, res, next) {
