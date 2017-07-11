@@ -4,8 +4,6 @@ You can clone/download and install dependencies. The app - while in production -
 
 TODO:
 
--- implement comment functionality
+-- modify messaging functionality
 
 -- style
-
--- deploy
