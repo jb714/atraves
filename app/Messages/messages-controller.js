@@ -6,14 +6,15 @@ angular.module('messages-controller', [])
     if($scope.latitude && $scope.longitude){
 
       var messageBody = {
-        id: $scope.latitude.toString() + $scope.longitude.toString(),
-        subId: $scope.oppLat.toString() + $scope.oppLon.toString(),
+        geoId: $scope.latitude.toString() + $scope.longitude.toString(),
+        subgeoId: $scope.oppLat.toString() + $scope.oppLon.toString(),
         messageArray: [{
           userName: $scope.userName,
           message: $scope.message,
           time: moment().format('MMMM Do YYYY, h:mm a')
         }]
       }
+
 
 
       $http.post('/messages', messageBody).then(function(input){
@@ -31,5 +32,6 @@ angular.module('messages-controller', [])
 
 
   }
+
 
 })
