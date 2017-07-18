@@ -2,18 +2,9 @@
   "development": {
     "use_env_variable": "dbURI",
     "dialect": "postgres",
-    "ssl": true,
-    "dialectOptions":{
-      "ssl":{
-        "require": true
-      }
+    "dialectOptions": {
+      "ssl":"true"
     }
-  },
-  "test": {
-    "username": "JBell",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+
   }
 }
