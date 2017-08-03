@@ -22,8 +22,8 @@ angular.module("geolocator-controller", [])
       function(promise){
         var coords =  promise.data.results[0].geometry.location;
 
-        $scope.lat = parseInt(coords.lat)
-        $scope.lng = parseInt(coords.lng);
+        $scope.lat = coords.lat;
+        $scope.lng = coords.lng;
 
         $scope.coordsOpposite();
       },

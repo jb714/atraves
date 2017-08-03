@@ -44,6 +44,7 @@
 
   <section id="maps" ng-controller="maps-controller">
     <div class="map">
+      <!-- <p>Query latitude {{lat}}, Query longitude {{lng}}</p> -->
       <ui-gmap-google-map center='map.center' zoom='map.zoom'>
 
         <ui-gmap-marker idKey="marker.id" coords="marker.coords"></ui-gmap-marker>
@@ -51,6 +52,7 @@
     </div>
 
     <div class="map">
+      <!-- <p>Antipode latitude {{oppLat}}, Antipode longitude {{oppLng}}</p> -->
       <ui-gmap-google-map center='map2.center' zoom='map2.zoom'>
         <ui-gmap-marker idKey="marker2.id" coords="marker2.coords"></ui-gmap-marker>
       </ui-gmap-google-map>

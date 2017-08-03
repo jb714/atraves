@@ -39,7 +39,7 @@ angular.module('Geolocator', [])
     }
 
     address = address.join('');
-
+    console.log("Parsed address:", address);
     return $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
     address + '&key=' + API_KEY)
 

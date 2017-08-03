@@ -6,7 +6,7 @@ angular.module("maps-controller", [])
   //Have maps ready for initialization of directives
   $scope.map = {
     center: {latitude: $scope.lat, longitude: $scope.lng},
-    zoom: 4
+    zoom: 9
   };
 
   $scope.map2 = {
@@ -27,13 +27,11 @@ angular.module("maps-controller", [])
   //Watch for changes to lat and lng values on scope
   $scope.$watchGroup(['lat', 'lng'], function(){
     //the scope has changed, so we need to fire coordsOpposite again
-
-    console.log();
     $scope.coordsOpposite();
 
     $scope.map = {
       center: {latitude: $scope.lat, longitude: $scope.lng},
-      zoom: 4
+      zoom: 9
     };
     $scope.map2 = {
       center: {latitude: $scope.oppLat, longitude: $scope.oppLng},
