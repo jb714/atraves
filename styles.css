@@ -6,6 +6,14 @@
 
 }
 
+header{
+  text-align: center;
+}
+
+#coordinate-entry{
+  text-align: center;
+}
+
 .map{
   display: inline-block;
 }
@@ -14,6 +22,10 @@
   border: solid 1px black;
   width: 400px;
   height: 200px;
+}
+
+#maps{
+  text-align: center;
 }
 
 /*#firstPart{

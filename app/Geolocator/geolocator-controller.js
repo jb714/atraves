@@ -1,19 +1,24 @@
 angular.module("geolocator-controller", [])
 
 
-.controller("geolocator-controller", function($scope, Geolocator){
+.controller("geolocator-controller", function($scope, $http, Geolocator){
 
   //Need all factories to pass their coordinate data here, as we need coordinates to initialize the rest of application
-  $scope.latitude = "34";
-  $scope.longitude = "-118";
+  $scope.lat = "";
+  $scope.lng = "";
   $scope.oppLat = "";
-  $scope.oppLon = "";
+  $scope.oppLng = "";
+  $scope.city = "";
 
   //Function that calculates opposite coordinates
   $scope.coordsOpposite = function() {
-    var obj  = Geolocator.coordsOpposite($scope.latitude,$scope.longitude);
-    $scope.oppLat = obj.oppLat;
-    $scope.oppLon = obj.oppLon;
+    var oppCoords  = Geolocator.coordsOpposite($scope.lat,$scope.lng);
+    $scope.oppLat = oppCoords.oppLat;
+    $scope.oppLng = oppCoords.oppLng;
+  }
+
+  $scope.searchByAddress = function(){
+    var coords = Geolocator.searchByAddress($scope.city);
   }
 
   //Geolocation function. Runs if button on view is clicked.
@@ -23,11 +28,10 @@ angular.module("geolocator-controller", [])
 
       function(promise){
 
-        $scope.latitude = parseInt(promise.coords.latitude);
-        $scope.longitude = parseInt(promise.coords.longitude);
+        $scope.lat = parseInt(promise.coords.latitude);
+        $scope.lng = parseInt(promise.coords.longitude);
 
         $scope.coordsOpposite();
-
 
       },
       function(err){
@@ -35,5 +39,6 @@ angular.module("geolocator-controller", [])
       }
     );
   }
+
 
 })

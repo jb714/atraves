@@ -3,6 +3,62 @@ angular.module('Geolocator', [])
 
 .factory('Geolocator', ['$http', '$window', '$q', function($http, $window, $q) {
 
+
+  var coordsOpposite = function(lat, lng){
+
+    //If lat/lng are falsy, oppLng/oppLat default to zero and are returned
+    var oppLng = 0, oppLat = 0;
+
+
+    if(lat && lng){
+      lat = parseInt(lat);
+      lng = parseInt(lng);
+
+      lat > 0 ? oppLat = parseInt("-" + lat) : oppLat = lat / -1;
+
+      //if longitude is positive subtract 180 (if longitude is 0 or negative add 180)
+      lng > 0 ? oppLng = lng - 180 : oppLng = lng + 180;
+    }
+
+    return {
+      oppLat: oppLat,
+      oppLng: oppLng
+    }
+
+  }
+
+  var searchByAddress = function(query){
+    var API_KEY = 'AIzaSyD8TIStKWe6gYH-KnB7YS9KsLYv-xNQmC4';
+    var address  = query.split('');
+    var lat, lng;
+    //Format the query string for API contact
+    for(var i = 0; i < address.length; i++){
+      if(address[i] === " "){
+        address[i] = "+";
+      }
+    }
+
+    address = address.join('');
+
+    $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
+    address + '&key=' + API_KEY)
+    .then(function(coord_results){
+      var queryResults = coord_results.data.results;
+      var geodata = queryResults[0].geometry;
+      console.log(geodata.location.lat);
+      
+      return {lat: geodata.location.lat,
+      lng: geodata.location.lng}
+      // $scope.queryResults = coord_results.data.results;
+      // $scope.geodata = $scope.queryResults[0].geometry;
+      console.log("Success!", geodata)
+    },
+    function error(_error){
+      console.log("Fail")
+      $scope.queryError = _error;
+    });
+  }
+
   var getCurrentPosition = function() {
 
     var deferred = $q.defer();
@@ -25,33 +81,10 @@ angular.module('Geolocator', [])
       return deferred.promise;
     }
 
-
-    var coordsOpposite = function(lat, lon){
-
-
-      var oppLon = 0, oppLat = 0;
-
-      //If lat/lon are falsy, oppLon/oppLat default to zero and are returned
-      if(lat && lon){
-        lat = parseInt(lat);
-        lon = parseInt(lon);
-
-        lat > 0 ? oppLat = parseInt("-" + lat) : oppLat = lat / -1;
-
-        //if longitude is positive subtract 180 (if longitude is 0 or negative add 180)
-        lon > 0 ? oppLon = lon - 180 : oppLon = lon + 180;
-      }
-
-      return {
-        oppLat: oppLat,
-        oppLon: oppLon
-      }
-
-    }
-
     return {
+      coordsOpposite: coordsOpposite,
+      searchByAddress: searchByAddress,
       getCurrentPosition: getCurrentPosition,
-      coordsOpposite: coordsOpposite
     }
 
   }])

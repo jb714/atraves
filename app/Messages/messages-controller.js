@@ -3,11 +3,11 @@ angular.module('messages-controller', [])
 .controller('messages-controller', function($scope, $http) {
 
   $scope.postMessage = function(){
-    if($scope.latitude && $scope.longitude){
+    if($scope.lat && $scope.lng){
 
       var messageBody = {
-        geoId: $scope.latitude.toString() + $scope.longitude.toString(),
-        subgeoId: $scope.oppLat.toString() + $scope.oppLon.toString(),
+        geoId: $scope.lat.toString() + $scope.lng.toString(),
+        subgeoId: $scope.oppLat.toString() + $scope.oppLng.toString(),
         messageArray: [{
           userName: $scope.userName,
           message: $scope.message,

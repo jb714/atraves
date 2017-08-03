@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="styles.css"/>
 
 </head>
+
 <body ng-app="atraves" ng-controller="geolocator-controller">
   <header>
     <h1 id="firstPart">botell<span id="secondPart">A</span>trav&eacute;s</h1>
@@ -25,36 +26,40 @@
   </header>
 
   <section id="coordinate-entry">
-
+    <p> Search by geo-coordinates:</p>
     <label>Latitude:</label>
-    <input type="text" placeholder="Enter latitude coordinates" ng-model="latitude" value="latitude"/>
+    <input type="text" placeholder="Enter latitude coordinates" ng-model="lat" value="lat"/>
     <label>Longitude:</label>
-    <input type="text" placeholder="Enter longitude coordinates" ng-model="longitude" value="longitude"/>
-    <button type="submit" ng-click="getCurrentPosition()" />GeoLocate Me</button>
-
-
+    <input type="text" placeholder="Enter longitude coordinates" ng-model="lng" value="lng"/>
+    <button type="submit" ng-click="getCurrentPosition()" />GeoLocate Me!</button>
+    <p> Or by city</p>
+    <label>City:</label>
+    <input type="text" placeholder="Enter a city" ng-model="city" value="city"/>
+    <button type="submit" ng-click="searchByAddress()" />Search By Address</button>
 
   </section>
 
+  <br /><br />
+
+
   <section id="maps" ng-controller="maps-controller">
-    <div class="map" >
+    <div class="map">
       <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-        <!--Markers may not be needed
-        <ui-gmap-marker idKey="marker.id" coords="marker.coords"></ui-gmap-marker> -->
+
+        <ui-gmap-marker idKey="marker.id" coords="marker.coords"></ui-gmap-marker>
       </ui-gmap-google-map>
     </div>
 
     <div class="map">
       <ui-gmap-google-map center='map2.center' zoom='map2.zoom'>
-        <!--Markers may not be needed
-        <ui-gmap-marker idKey="marker2.id" coords="marker2.coords"></ui-gmap-marker> -->
+        <ui-gmap-marker idKey="marker2.id" coords="marker2.coords"></ui-gmap-marker>
       </ui-gmap-google-map>
 
     </div>
 
   </section>
 
-  <hr />
+<!--   <hr />
 
   <section id="Chatbox" ng-controller="messages-controller">
     <h3>What are they talking about on the other side of the world??</h3>
@@ -76,7 +81,7 @@
 
     <hr />
 
-  </section>
+  </section> -->
 
 </body>
 </html>

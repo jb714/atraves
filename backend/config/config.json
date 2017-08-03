@@ -2,8 +2,8 @@
   "development": {
     "use_env_variable": "dbURI",
     "dialect": "postgres",
-    "dialectOptions": {
-      "ssl":"true"
+    "options": {
+      "dialect": "postgres"
     }
 
   }
