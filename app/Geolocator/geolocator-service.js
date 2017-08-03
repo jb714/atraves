@@ -40,23 +40,9 @@ angular.module('Geolocator', [])
 
     address = address.join('');
 
-    $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
+    return $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
     address + '&key=' + API_KEY)
-    .then(function(coord_results){
-      var queryResults = coord_results.data.results;
-      var geodata = queryResults[0].geometry;
-      console.log(geodata.location.lat);
-      
-      return {lat: geodata.location.lat,
-      lng: geodata.location.lng}
-      // $scope.queryResults = coord_results.data.results;
-      // $scope.geodata = $scope.queryResults[0].geometry;
-      console.log("Success!", geodata)
-    },
-    function error(_error){
-      console.log("Fail")
-      $scope.queryError = _error;
-    });
+
   }
 
   var getCurrentPosition = function() {

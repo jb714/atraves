@@ -18,7 +18,19 @@ angular.module("geolocator-controller", [])
   }
 
   $scope.searchByAddress = function(){
-    var coords = Geolocator.searchByAddress($scope.city);
+    Geolocator.searchByAddress($scope.city).then(
+      function(promise){
+        var coords =  promise.data.results[0].geometry.location;
+
+        $scope.lat = parseInt(coords.lat)
+        $scope.lng = parseInt(coords.lng);
+
+        $scope.coordsOpposite();
+      },
+      function(err){
+        return err;
+      }
+    );
   }
 
   //Geolocation function. Runs if button on view is clicked.
