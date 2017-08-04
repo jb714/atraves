@@ -29,7 +29,7 @@ exports.postMessage = function(req, res, next) {
     {upsert: true, new: true, runValidators: true},//upsert
     function(err, doc) {
       if(err){
-        console.log("ayy bruh. there was an error.",err)
+        console.log("There was an error.",err)
       } else {
         console.log("All good :)")
         //getMessages();
