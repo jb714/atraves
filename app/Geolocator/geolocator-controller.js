@@ -38,6 +38,7 @@ angular.module("geolocator-controller", [])
   $scope.getCurrentPosition = function() {
     $scope.lat = "";
     $scope.lng = "";
+    $scope.city = "";
 
     Geolocator.getCurrentPosition().then(
       function(promise){
