@@ -58,11 +58,11 @@ angular.module('Geolocator', [])
     else {
       $window.navigator.geolocation.getCurrentPosition(
         function(position){
-          console.log("Here, too?", position);
+
           deferred.resolve(position);
         },
         function(err) {
-          console.log("Epicus failus", err);
+          
           deferred.reject(err);
         });
       }
