@@ -42,8 +42,8 @@ angular.module("geolocator-controller", [])
 
     Geolocator.getCurrentPosition().then(
       function(promise){
-        $scope.lat = parseInt(promise.coords.latitude);
-        $scope.lng = parseInt(promise.coords.longitude);
+        $scope.lat = promise.coords.latitude;
+        $scope.lng = promise.coords.longitude;
 
         $scope.coordsOpposite();
 

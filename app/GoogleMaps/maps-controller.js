@@ -14,7 +14,7 @@ angular.module("maps-controller", [])
     zoom: 4
   };
 
-  //Markers may not be needed..
+
   $scope.marker = {
     id: 0, coords: {latitude: $scope.lat, longitude: $scope.lng}
   }
