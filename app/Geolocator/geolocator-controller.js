@@ -17,6 +17,7 @@ angular.module("geolocator-controller", [])
     $scope.oppLng = oppCoords.oppLng;
   }
 
+  //Search by address function. Runs if button on view is clicked
   $scope.searchByAddress = function(){
     Geolocator.searchByAddress($scope.city).then(
       function(promise){
@@ -35,11 +36,11 @@ angular.module("geolocator-controller", [])
 
   //Geolocation function. Runs if button on view is clicked.
   $scope.getCurrentPosition = function() {
+    $scope.lat = "";
+    $scope.lng = "";
 
     Geolocator.getCurrentPosition().then(
-
       function(promise){
-
         $scope.lat = parseInt(promise.coords.latitude);
         $scope.lng = parseInt(promise.coords.longitude);
 

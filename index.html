@@ -26,13 +26,13 @@
   </header>
 
   <section id="coordinate-entry">
-    <p> Search by geo-coordinates:</p>
+    <p> Enter geo-coordinates/have us geolocate you:</p>
     <label>Latitude:</label>
-    <input type="text" placeholder="Enter latitude coordinates" ng-model="lat" value="lat"/>
+    <input type="text" placeholder="Enter latitude" ng-model="lat" value="lat"/>
     <label>Longitude:</label>
-    <input type="text" placeholder="Enter longitude coordinates" ng-model="lng" value="lng"/>
+    <input type="text" placeholder="Enter longitude" ng-model="lng" value="lng"/>
     <button type="submit" ng-click="getCurrentPosition()" />GeoLocate Me!</button>
-    <p> Or by city</p>
+    <p> Or search by city/address</p>
     <label>City:</label>
     <input type="text" placeholder="Enter a city" ng-model="city" value="city"/>
     <button type="submit" ng-click="searchByAddress()" />Search By Address</button>

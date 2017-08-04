@@ -28,10 +28,11 @@ angular.module('Geolocator', [])
   }
 
   var searchByAddress = function(query){
+    var address = query;
     var API_KEY = 'AIzaSyD8TIStKWe6gYH-KnB7YS9KsLYv-xNQmC4';
-    var address  = query.split('');
+    /*var address  = query.split('');
     var lat, lng;
-    //Format the query string for API contact
+    Format the query string for API contact
     for(var i = 0; i < address.length; i++){
       if(address[i] === " "){
         address[i] = "+";
@@ -39,9 +40,9 @@ angular.module('Geolocator', [])
     }
 
     address = address.join('');
-    console.log("Parsed address:", address);
+    console.log("Parsed address:", address);*/
     return $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
-    address + '&key=' + API_KEY)
+    address + '&key=' + API_KEY);
 
   }
 
@@ -57,9 +58,11 @@ angular.module('Geolocator', [])
     else {
       $window.navigator.geolocation.getCurrentPosition(
         function(position){
+          console.log("Here, too?", position);
           deferred.resolve(position);
         },
         function(err) {
+          console.log("Epicus failus", err);
           deferred.reject(err);
         });
       }
