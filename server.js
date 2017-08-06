@@ -2,7 +2,7 @@ var express   = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var manager = require('./backend/DB/manager');
-var dotenv = require('dotenv').config();
+var dotenv = require('dotenv').config({ silent: process.env.NODE_ENV === 'production'});
 var app = express();
 
 //Express Logic
