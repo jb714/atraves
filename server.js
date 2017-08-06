@@ -2,7 +2,7 @@ var express   = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var manager = require('./backend/DB/manager');
-// var config = require('./config.js')
+var dotenv = require('dotenv').config();
 var app = express();
 
 //Express Logic
@@ -20,8 +20,8 @@ console.log("The music is playing on port " + port);
 
 
 //DB Logic
-var dbURI = "mongodb://heroku_g1x7n20p:ph7pbg081n5dg99ffog8nqnjvi@ds023455.mlab.com:23455/heroku_g1x7n20p";
-mongoose.connect(dbURI);
+console.log("DB URI",process.env.DB_URI);
+mongoose.connect(process.env.DB_URI);
 
 mongoose.connection.on('connected', function(){console.log("Mongoose. We're up")})
 

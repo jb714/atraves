@@ -16,7 +16,7 @@ angular.module('messages-controller', [])
         $scope.userName = "";
         $scope.message = "";
         //Save message and get latest collection
-        // $scope.getMessages();
+        $scope.getMessages();
       })
 
       .catch(function(error){
@@ -40,5 +40,5 @@ angular.module('messages-controller', [])
     })
 
   };
-  // $scope.getMessages();
+  $scope.getMessages();
 })
