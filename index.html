@@ -14,6 +14,7 @@
   <script src="./app/Geolocator/geolocator-service.js"></script>
   <script src="./app/GoogleMaps/maps-controller.js"></script>
   <script src="./app/Messages/messages-controller.js"></script>
+  <script src="./app/Messages/messages-service.js"></script>
 
   <link rel="stylesheet" href="styles.css"/>
 
@@ -60,17 +61,21 @@
 
   </section>
 
-<!--   <hr />
+<hr />
 
   <section id="Chatbox" ng-controller="messages-controller">
-    <h3>What are they talking about on the other side of the world??</h3>
-    <div id="receivedMsgs"></div>
+    <h3>What's happening on your side of the world??</h3>
+    <div id="receivedMsgs">
+      <div ng-repeat="message in messages">
+        {{message.userName}}: {{message.message}} ({{message.time}})
+      </div>
+    </div>
 
     <br/>
     <br/>
 
     <div id="msgForm">
-      <h5> Put a message in a bottle for them:</h5>
+      <h5> Put a message in a bottle:</h5>
       <input type="text" placeholder="Name" ng-model="userName">
 
       <br />
@@ -78,11 +83,12 @@
 
       <textarea ng-model="message"></textarea>
       <button type="submit" ng-click="postMessage()">Send Message</button>
+      <button type="submit" ng-click="getMessages()">Get Message</button>
     </div>
 
     <hr />
 
-  </section> -->
+  </section>
 
 </body>
 </html>

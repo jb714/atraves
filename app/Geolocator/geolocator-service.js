@@ -62,7 +62,7 @@ angular.module('Geolocator', [])
           deferred.resolve(position);
         },
         function(err) {
-          
+
           deferred.reject(err);
         });
       }

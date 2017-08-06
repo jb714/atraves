@@ -10,7 +10,7 @@ angular.module("geolocator-controller", [])
   $scope.oppLng = "";
   $scope.city = "";
 
-  //Function that calculates opposite coordinates
+  //Function that calculates opposite coordinates/antipode
   $scope.coordsOpposite = function() {
     var oppCoords  = Geolocator.coordsOpposite($scope.lat,$scope.lng);
     $scope.oppLat = oppCoords.oppLat;
@@ -27,11 +27,11 @@ angular.module("geolocator-controller", [])
         $scope.lng = coords.lng;
 
         $scope.coordsOpposite();
-      },
-      function(err){
-        return err;
       }
-    );
+    )
+    .catch(function(error){
+      console.log("error", error);
+    })
   }
 
   //Geolocation function. Runs if button on view is clicked.
@@ -47,11 +47,11 @@ angular.module("geolocator-controller", [])
 
         $scope.coordsOpposite();
 
-      },
-      function(err){
-        return err;
       }
-    );
+    )
+    .catch(function(error){
+      console.log("error", error);
+    })
   }
 
 
