@@ -29,16 +29,16 @@ angular.module('messages-controller', [])
 
   }
 
-  // $scope.getMessages = function(){
-  //
-  //   MessageOps.getMessages().then(function(input) {
-  //     $scope.messages = input.data;
-  //   })
-  //
-  //   .catch(function(error){
-  //     console.log("error", error);
-  //   })
-  //
-  // };
+  $scope.getMessages = function(){
+
+    MessageOps.getMessages().then(function(input) {
+      $scope.messages = input.data;
+    })
+
+    .catch(function(error){
+      console.log("error", error);
+    })
+
+  };
   // $scope.getMessages();
 })
