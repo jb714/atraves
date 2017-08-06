@@ -2,7 +2,7 @@ var express   = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var manager = require('./backend/DB/manager');
-var config = require('./config.js')
+// var config = require('./config.js')
 var app = express();
 
 //Express Logic
