@@ -20,7 +20,6 @@ console.log("The music is playing on port " + port);
 
 
 //DB Logic
-console.log("DB URI",process.env.DB_URI);
 mongoose.connect(process.env.DB_URI);
 
 mongoose.connection.on('connected', function(){console.log("Mongoose. We're up")})

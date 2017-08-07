@@ -1,4 +1,4 @@
-var atraves = angular.module('atraves', ['uiGmapgoogle-maps','geolocator-controller','maps-controller', 'messages-controller','Geolocator', 'MessageOps'])
+var atraves = angular.module('atraves', ['uiGmapgoogle-maps','ui.bootstrap','geolocator-controller','maps-controller', 'messages-controller','Geolocator', 'MessageOps'])
 
 .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({

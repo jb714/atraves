@@ -8,6 +8,7 @@
   <script src="https://rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.js"></script>
   <script src="https://rawgit.com/nmccready/angular-simple-logger/master/dist/angular-simple-logger.js"></script>
   <script src="node_modules/moment/min/moment.min.js"></script>
+  <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
 
   <script src="./app/app.js"></script>
   <script src="./app/Geolocator/geolocator-controller.js"></script>
@@ -16,6 +17,7 @@
   <script src="./app/Messages/messages-controller.js"></script>
   <script src="./app/Messages/messages-service.js"></script>
 
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="styles.css"/>
 
 </head>
@@ -32,11 +34,11 @@
     <input type="text" placeholder="Enter latitude" ng-model="lat" value="lat"/>
     <label>Longitude:</label>
     <input type="text" placeholder="Enter longitude" ng-model="lng" value="lng"/>
-    <button type="submit" ng-click="getCurrentPosition()" />GeoLocate Me!</button>
+    <button class="btn btn-primary" type="submit" ng-click="getCurrentPosition()" />GeoLocate Me!</button>
     <p> Or search by city/address</p>
     <label>City/Address:</label>
     <input type="text" placeholder="Enter a city" ng-model="city" value="city"/>
-    <button type="submit" ng-click="searchByAddress()" />Search</button>
+    <button class="btn btn-primary" type="submit" ng-click="searchByAddress()" />Search</button>
 
   </section>
 
@@ -56,18 +58,16 @@
       <ui-gmap-google-map center='map2.center' zoom='map2.zoom'>
         <ui-gmap-marker idKey="marker2.id" coords="marker2.coords"></ui-gmap-marker>
       </ui-gmap-google-map>
-
     </div>
-
   </section>
 
-<hr />
+  <hr />
 
   <section id="Chatbox" ng-controller="messages-controller">
     <h3>What's happening on your side of the world??</h3>
     <div id="receivedMsgs">
       <div ng-repeat="message in messages">
-        {{message.userName}}: {{message.message}} ({{message.time}})
+        <p>{{message.userName}}: {{message.message}} ({{message.time}})</p>
       </div>
     </div>
 
@@ -75,15 +75,14 @@
     <br/>
 
     <div id="msgForm">
-      <h5> Put a message in a bottle:</h5>
-      <input type="text" placeholder="Name" ng-model="userName">
-
-      <br />
-      <br />
-
-      <textarea ng-model="message"></textarea>
-      <button type="submit" ng-click="postMessage()">Send Message</button>
-      <button type="submit" ng-click="getMessages()">Get Message</button>
+      <form name="msgForm">
+        <h5> Put a message in a bottle:</h5>
+        <input type="text" placeholder="Name" ng-model="userName" required>
+        <br />
+        <br />
+        <textarea ng-model="message" ng-minlength="5" required></textarea>
+        <button  class="btn btn-primary" type="submit" ng-click="postMessage()">Leave Comment</button>
+      </form>
     </div>
 
     <hr />
