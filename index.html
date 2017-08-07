@@ -32,18 +32,19 @@
 
 
     <section id="coordinate-entry">
-      <h5> Enter geo-coordinates/have us geolocate you:</h5>
+      <h5> Enter geo-coordinates or click to have us geolocate you:</h5>
       <input type="text" placeholder="Enter latitude" ng-model="lat" value="lat"/>
       <input type="text" placeholder="Enter longitude" ng-model="lng" value="lng"/>
       <button class="btn btn-success" type="submit" ng-click="getCurrentPosition()" />GeoLocate Me!</button>
       <br/>
       <br/>
-      <h5> Or search by city/address:</h5>
+      <h5> Search by city/address:</h5>
       <input type="text" placeholder="Enter a city/address" ng-model="city" value="city"/>
       <button class="btn btn-success" type="submit" ng-click="searchByAddress()" />Search</button>
     </section>
 
   </header>
+
 
   <section id="maps" ng-controller="maps-controller">
     <div class="map">
@@ -60,7 +61,6 @@
       </ui-gmap-google-map>
     </div>
   </section>
-
 
 
   <section id="commentSection" ng-controller="messages-controller">
