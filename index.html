@@ -24,25 +24,29 @@
 
 <body ng-app="atraves" ng-controller="geolocator-controller">
   <header>
-    <h1 id="firstPart">A</span>trav&eacute;s</h1>
-    <h3>The other side of the world. Here.</h3>
+    <section id="titleBar">
+      <h1 id="firstPart">A</span>trav&eacute;s</h1>
+      <h3>The other side of the world. Here.</h3>
+      <br/>
+    </section>
+
+
+    <section id="coordinate-entry">
+      <h5> Enter geo-coordinates/have us geolocate you:</h5>
+      <input type="text" placeholder="Enter latitude" ng-model="lat" value="lat"/>
+      <input type="text" placeholder="Enter longitude" ng-model="lng" value="lng"/>
+      <button class="btn btn-success" type="submit" ng-click="getCurrentPosition()" />GeoLocate Me!</button>
+      <br/>
+      <br/>
+      <h5> Or search by city/address:</h5>
+      <input type="text" placeholder="Enter a city/address" ng-model="city" value="city"/>
+      <button class="btn btn-success" type="submit" ng-click="searchByAddress()" />Search</button>
+    </section>
+
   </header>
 
-  <section id="coordinate-entry">
-    <p> Enter geo-coordinates/have us geolocate you:</p>
-    <label>Latitude:</label>
-    <input type="text" placeholder="Enter latitude" ng-model="lat" value="lat"/>
-    <label>Longitude:</label>
-    <input type="text" placeholder="Enter longitude" ng-model="lng" value="lng"/>
-    <button class="btn btn-primary" type="submit" ng-click="getCurrentPosition()" />GeoLocate Me!</button>
-    <p> Or search by city/address</p>
-    <label>City/Address:</label>
-    <input type="text" placeholder="Enter a city" ng-model="city" value="city"/>
-    <button class="btn btn-primary" type="submit" ng-click="searchByAddress()" />Search</button>
-
-  </section>
-
-  <br /><br />
+  <br />
+  <br />
 
 
   <section id="maps" ng-controller="maps-controller">
@@ -63,11 +67,11 @@
 
   <hr />
 
-  <section id="Chatbox" ng-controller="messages-controller">
+  <section id="commentSection" ng-controller="messages-controller">
     <h3>What's happening on your side of the world??</h3>
-    <div id="receivedMsgs">
-      <div ng-repeat="message in messages">
-        <p>{{message.userName}}: {{message.message}} ({{message.time}})</p>
+    <div id="commentBox">
+      <div class="comments" ng-repeat="message in messages | orderBy: 'id':true">
+        <p><h5><span id="userName">{{message.userName}}:</span>&ensp;{{message.message}}</h5><h6> ({{message.time}})</h6></p>
       </div>
     </div>
 
@@ -80,8 +84,10 @@
         <input type="text" placeholder="Name" ng-model="userName" required>
         <br />
         <br />
-        <textarea ng-model="message" ng-minlength="5" required></textarea>
-        <button  class="btn btn-primary" type="submit" ng-click="postMessage()">Leave Comment</button>
+        <div class="input-group">
+          <textarea ng-model="message" ng-minlength="5" required></textarea>
+          <button class="btn btn-success" type="submit" ng-click="postMessage()">Leave Comment</button>
+        </div>
       </form>
     </div>
 
