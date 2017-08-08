@@ -50,7 +50,7 @@ angular.module("geolocator-controller", [])
       }
     )
     .catch(function(error){
-      alert("Looks like there's an issue with the Google's Geolocation API (happens from time to time). Please use our other search features and try again later.");
+      alert("Looks like there's an issue with the Google Geolocation API (happens from time to time). Please use our other search features and try again later.");
       console.log("error", error);
     })
   }
